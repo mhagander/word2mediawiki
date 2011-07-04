@@ -159,8 +159,8 @@ if __name__ == "__main__":
 	(baseoutname, docextension) = os.path.splitext(inputfile)
 	baseoutname = os.path.basename(baseoutname)
 	docextension=docextension[1:] # Remove leading period
-	if not docextension in allowedextensions:
-		print "Unknown extension '%s'" % docextension
+	if not docextension.lower() in allowedextensions:
+		print "Unknown extension '%s'" % docextension.lower()
 		print "Only %s are allowed" % ", ".join(allowedextensions)
 		sys.exit(1)
 
