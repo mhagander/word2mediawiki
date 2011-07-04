@@ -225,8 +225,8 @@ if __name__ == "__main__":
 				print "File %s already exists, trying another name" % ("File:%s.%s" % (outname, docextension))
 				continue
 
+		foundany = False
 		for i in range(0, len(images)):
-			foundany = False
 			with IOWrapper("Checking whether 'File:%s_%s.%s' exists..." % (outname, i, images[i].extension())):
 				if Page(site, "File:%s_%s.%s" % (outname, i, images[i].extension())).exists():
 					print "Image %s already exists, trying another name" % ("File:%s_%s.%s" % (outname, i, images[i].extension()))
