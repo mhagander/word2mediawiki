@@ -184,7 +184,10 @@ if __name__ == "__main__":
 
 	# Grab images out of the XML data
 	parser = XMLParser(target=ImageGrabber())
-	parser.feed(open('%s/converted.xml' % tempdir).read())
+
+	# XXX: rewrite the namespace so as not to confuse certain XML parsers
+	# (changes either in newer open/libreoffice or newer XML parsers require this)
+	parser.feed(open('%s/converted.xml' % tempdir).read().replace("\"http://www.w3.org/XML/1998/namespace\"","\"http://www.w3.org/XML/1998/namespace_bugfix\""))
 	parser.close()
 
 	# Prepare for uploading to mediawiki
