@@ -41,7 +41,7 @@ for F in $(find share -type f) ; do
       FIRST=0
    fi
    python word2mediawiki.py "$F" >> $LOG 2>&1
-   rm -f $F
+   rm -f "$F"
    date +"%Y-%m-%d %H:%M:%S Done with $F, removing." >> $LOG
 done
 
