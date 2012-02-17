@@ -109,6 +109,8 @@ class ImageWrapper(object):
 			return 'png'
 		if self.mimetype.find('JPG') >= 0 or self.mimetype.find('JPEG') >= 0:
 			return 'jpg'
+		if self.mimetype.find('EMF') >= 0:
+			return 'emf'
 		print "Unknown image type '%s'" % self.mimetype
 		return 'bin'
 
