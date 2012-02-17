@@ -151,7 +151,7 @@ if __name__ == "__main__":
 	if len(args) != 1:
 		opt.print_help()
 		sys.exit(1)
-	inputfile = args[0]
+	inputfile = args[0].decode('utf8')
 
 	# Validate the doc exists
 	if not os.path.exists(inputfile):
@@ -164,7 +164,7 @@ if __name__ == "__main__":
 
 	# Normalize URLs to ASCII. Assume they are utf8 on input, and remove
 	# all accents durning things like å into a.
-	baseoutname = unicodedata.normalize('NFKD', baseoutname.decode('utf8')).encode('ascii', 'ignore')
+	baseoutname = unicodedata.normalize('NFKD', baseoutname).encode('ascii', 'ignore')
 
 	docextension=docextension[1:] # Remove leading period
 	if not docextension.lower() in allowedextensions:

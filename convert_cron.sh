@@ -3,6 +3,9 @@
 LOCK=/var/lock/docconvert
 LOG=/usr/local/word2mediawiki/log/word2mediawiki.log
 
+# Set python default I/O encoding for the log
+export PYTHONIOENCODING=utf-8
+
 # Set the internal field separator (IFS) to not include spaces, enabling
 # use of paths with spaces
 ORIGINAL_IFS=$IFS
