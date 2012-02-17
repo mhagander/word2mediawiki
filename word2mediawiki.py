@@ -21,6 +21,7 @@ import re
 import magic
 import traceback
 import codecs
+import unicodedata
 
 from xml.etree.ElementTree import XMLParser
 from DocumentConverter import DocumentConverter
@@ -158,6 +159,11 @@ if __name__ == "__main__":
 	# Determine and validate base name and extension
 	(baseoutname, docextension) = os.path.splitext(inputfile)
 	baseoutname = os.path.basename(baseoutname)
+
+	# Normalize URLs to ASCII. Assume they are utf8 on input, and remove
+	# all accents durning things like å into a.
+	baseoutname = unicodedata.normalize('NFKD', baseoutname.decode('utf8')).encode('ascii', 'ignore')
+
 	docextension=docextension[1:] # Remove leading period
 	if not docextension.lower() in allowedextensions:
 		print "Unknown extension '%s'" % docextension.lower()
