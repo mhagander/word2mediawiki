@@ -25,8 +25,8 @@ date +"%Y-%m-%d %H:%M:%S Scanning directory..." >> $LOG
 # If there are any files to convert, send them through the converter
 cd /usr/local/word2mediawiki
 FIRST=1
-for F in $(find share -type f) ; do
-   date +"%Y-%m-%d %H:%M:%S Converting $F..." >> $LOG
+for OLDF in $(find share -type f) ; do
+   date +"%Y-%m-%d %H:%M:%S Converting $OLDF..." >> $LOG
    if [ "$FIRST" == "1" ]; then
       # If there is an instance of openoffice running, get rid of it
       # (there should never be one)
@@ -40,8 +40,15 @@ for F in $(find share -type f) ; do
       sleep 5
       FIRST=0
    fi
+
+   # Get rid of strange characters
+   F=$(echo "$OLDF" | iconv -f utf8 -t ascii//ignore)
+   mv -v -f "$OLDF" "$F" >> $LOG
+
    python word2mediawiki.py "$F" >> $LOG 2>&1
+
    rm -f "$F"
+
    date +"%Y-%m-%d %H:%M:%S Done with $F, removing." >> $LOG
 done
 
