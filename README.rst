@@ -74,6 +74,12 @@ actions in a flow:
    then all the images, and finally a copy of the original word document for
    reference.
 
+Ubuntu 12.04
+------------
+There's a bug in libreoffice on Ubuntu 12.04 for the mediawiki publisher extension.
+See wiki-publisher-files/README for information on how to work around that.
+
+
 Setting up
 ----------
 The first step of setting up, is to create a *family* for *pywikipedia* to use

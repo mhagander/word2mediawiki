@@ -1,0 +1,8 @@
+The math directory needs to be copied into
+/usr/lib/libreoffice/share/extensions/wiki-publisher/filter/
+
+and chowned to root.
+
+As a workaronud for libreoffice #46509.
+
+The files are imported from Ubuntu 11.10, where they are ok.
