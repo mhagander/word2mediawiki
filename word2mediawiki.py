@@ -56,16 +56,23 @@ ms.load()
 
 # Wrapper to we answer all prompts, since pywikipediabot isn't
 # intended to be scripted this way. We expect we're only going to get
-# prompted about warnings, so we always say yes.
+# prompted about warnings, so we always say yes a couple of times. However,
+# the upload process can easiliy get stuck, so we put a limit on how many
+# times we can do that, and eventually give up...
 # This class will also capture standard output, since the pywikipediabot
 # classes are *extremely* chatty.
 class IOWrapper():
 	def __init__(self, activity):
 		if options.verbose:
 			print activity
+		self.yessent = 0
 
 	def readline(self):
 		# Wrapper for stdin
+		self.yessent += 1
+		if self.yessent > 5:
+			raise Exception("Attempted to retry 5 times, still doesn't work... Giving up")
+			return 'N'
 		return 'Y'
 
 	def write(self, str):
