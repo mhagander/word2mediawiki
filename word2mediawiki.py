@@ -191,6 +191,8 @@ if __name__ == "__main__":
 	# (changes either in newer open/libreoffice or newer XML parsers require this)
 	parser.feed(open('%s/converted.xml' % tempdir).read().replace("\"http://www.w3.org/XML/1998/namespace\"","\"http://www.w3.org/XML/1998/namespace_bugfix\""))
 	parser.close()
+	if options.verbose:
+		print "Grabbed %s images" % len(images)
 
 	# Prepare for uploading to mediawiki
 	# Make sure we are logged in
