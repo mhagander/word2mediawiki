@@ -13,7 +13,7 @@
 
 ## Some static settings - only change when sure what you're doing
 ##  (normal settings are in word2mediawiki.ini
-allowedextensions=('odt', 'doc')
+allowedextensions=('odt', 'doc', 'docx')
 
 import os
 import sys
