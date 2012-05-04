@@ -33,7 +33,7 @@ for OLDF in $(find share -type f) ; do
       pkill -9 soffice.bin
 
       # Start open office in listening mode
-      soffice -accept="socket,port=8100;urp;" -norestore -headless >>$LOG
+      soffice --accept="socket,port=8100;urp;" --norestore --headless --nologo >>$LOG
 
       # For each run, sleep a while to make sure samba has finished
       # writing the file, and that openoffice has actually started.
